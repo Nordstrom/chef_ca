@@ -1,6 +1,6 @@
 #
-# Cookbook:: chef_ca
-# Recipe:: default
+# Cookbook: chef_ca
+# Test: default_test
 #
 # Copyright:: 2018 Nordstrom, Inc.
 #
@@ -17,7 +17,9 @@
 # limitations under the License.
 #
 
-chef_ca 'Chef cacert addition' do
-  type :chef
-  ca_bundle node['chef_ca']['ca_bundle']
+cacert = os.windows? ? 'c:/opscode/chef/embedded/ssl/certs/cacert.pem' : '/opt/chef/embedded/ssl/certs/cacert.pem'
+
+describe file(cacert) do
+  its('content') { should match /Cert Bundle - test certificate/ }
+  its('content') { should match /MIIFFTCCAv2gAwIBAgIQNo9XwT6QsblLA\+3qdriHZTANBgkqhkiG9w0BAQsFADAd/ }
 end

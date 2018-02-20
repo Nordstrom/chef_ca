@@ -1,6 +1,6 @@
 #
-# Cookbook:: chef_ca
-# Recipe:: default
+# Cookbook: tester
+# Recipe: default
 #
 # Copyright:: 2018 Nordstrom, Inc.
 #
@@ -17,7 +17,11 @@
 # limitations under the License.
 #
 
-chef_ca 'Chef cacert addition' do
+bundle = '-----BEGIN CERTIFICATE-----
+MIIFFTCCAv2gAwIBAgIQNo9XwT6QsblLA+3qdriHZTANBgkqhkiG9w0BAQsFADAd
+-----END CERTIFICATE-----'
+
+chef_ca 'test certificate' do
   type :chef
-  ca_bundle node['chef_ca']['ca_bundle']
+  ca_bundle bundle
 end

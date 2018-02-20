@@ -1,7 +1,3 @@
-#
-# Cookbook:: chef_ca
-# Recipe:: default
-#
 # Copyright:: 2018 Nordstrom, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the 'License');
@@ -17,7 +13,13 @@
 # limitations under the License.
 #
 
-chef_ca 'Chef cacert addition' do
-  type :chef
-  ca_bundle node['chef_ca']['ca_bundle']
+Dir.glob('libraries/*.rb').each do |lib|
+  require_relative "../#{lib}"
+end
+
+RSpec.configure do |config|
+  config.expose_dsl_globally = true
+  config.mock_with :rspec do |mocks|
+    mocks.allow_message_expectations_on_nil = true
+  end
 end
