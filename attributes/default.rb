@@ -1,6 +1,6 @@
 #
-# Cookbook:: chef_ca
-# Recipe:: default
+# Cookbook: chef_ca
+# Attributes: default
 #
 # Copyright:: 2018 Nordstrom, Inc.
 #
@@ -17,7 +17,4 @@
 # limitations under the License.
 #
 
-chef_ca 'Chef cacert addition' do
-  type :chef
-  ca_bundle node['chef_ca']['ca_bundle']
-end
+default['chef_ca']['ca_bundle'] = nil
