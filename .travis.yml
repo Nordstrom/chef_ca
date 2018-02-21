@@ -20,7 +20,5 @@ script:
   - /opt/chefdk/embedded/bin/cookstyle
   - /opt/chefdk/embedded/bin/foodcritic .
   - /opt/chefdk/embedded/bin/rspec
-  - /opt/chefdk/embedded/bin/kitchen verify
-  - KITCHEN_LOCAL_YAML=.kitchen.dokken.yml /opt/chefdk/embedded/bin/kitchen verify default-ubuntu-1604
 matrix:
   fast_finish: true

@@ -52,7 +52,7 @@ describe 'cacerts class' do
     it 'should compute cacert path for windows chefdk' do
       cacerts = CaCerts.new(@name, @type, @bundle, @path)
       allow(cacerts).to receive(:os_type).and_return('windows')
-      expect(cacerts.cacert_path).to eq('/opt/chef/embedded/ssl/certs/cacert.pem')
+      expect(cacerts.cacert_path).to eq('c:/opscode/chef/embedded/ssl/certs/cacert.pem')
     end
 
     it 'should use the specifed cacert path' do
