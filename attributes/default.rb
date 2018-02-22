@@ -18,3 +18,5 @@
 #
 
 default['chef_ca']['ca_bundle'] = nil
+default['chef_ca']['ca_type'] = :chef
+default['chef_ca']['ca_bundle_name'] = 'Chef cacert addition'
