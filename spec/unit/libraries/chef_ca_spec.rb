@@ -81,11 +81,6 @@ describe 'cacerts class' do
       expect(cacerts.bundle_installed?).to be_truthy
     end
 
-    it 'should add the certs' do
-      cacerts = CaCerts.new(@name, @type, @bundle, @path)
-      cacerts.bundle_install
-      expect(cacerts.bundle_installed?).to be_truthy
-    end
   end
 end
 

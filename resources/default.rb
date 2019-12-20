@@ -17,7 +17,10 @@ end
 action :set do
   return unless new_resource.ca_bundle
   cacerts = CaCerts.new(new_resource.name, new_resource.type, new_resource.ca_bundle, new_resource.cacert_path)
-  return if cacerts.bundle_installed?
+  if cacerts.bundle_installed?
+    Chef::Log.debug("chef_ca #{new_resource.name} bundle already installed")
+    return
+  end
   converge_by("Chef_ca add bundle #{new_resource.name} to #{cacerts.cacert_path}") do
     cacerts.bundle_install
   end

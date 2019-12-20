@@ -21,6 +21,8 @@
 module ChefCA
   # Mange the certificate bundles in the chef cacert.pem file
   class CaCerts
+    require 'tempfile'
+
     def initialize(name, type, bundle, path)
       @name = name
       @type = type
@@ -29,21 +31,32 @@ module ChefCA
       @os = os_type
     end
 
-    def cacert_path
-      @path || @path = computed_cacert_path
-    end
-
     def bundle_install
-      open(cacert_path, 'a') do |f|
-        f.puts "Cert Bundle - #{@name}"
-        f.puts '==========================='
-        f.puts @bundle
-      end
+      temp_cacert = Tempfile.open('cacert', cacert_dir)
+      temp_cacert.puts cacert_contents
+      temp_cacert.puts "Cert Bundle - #{@name}"
+      temp_cacert.puts '==========================='
+      temp_cacert.puts @bundle
+      temp_cacert.close
+      mover = Chef::FileContentManagement::Deploy.strategy(true)
+      mover.deploy(temp_cacert.path, cacert_path)
     end
 
     def bundle_installed?
       chef_cacert_pem = ::File.read(cacert_path)
       chef_cacert_pem.include?(@bundle)
+    end
+
+    def cacert_contents
+      File.read(cacert_path)
+    end
+
+    def cacert_dir
+      File.dirname(cacert_path)
+    end
+
+    def cacert_path
+      @path || @path = computed_cacert_path
     end
 
     def computed_cacert_path

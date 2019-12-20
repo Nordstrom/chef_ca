@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-chef_ca 'Chef cacert addition' do
+chef_ca node['chef_ca']['ca_bundle_name'] do
   type :chef
   ca_bundle node['chef_ca']['ca_bundle']
 end
