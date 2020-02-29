@@ -26,6 +26,7 @@ module ChefCA
     def initialize(name, type, bundle, path)
       @name = name
       @type = type
+      @type = 'chef-workstation' if type == 'chefworkstation'
       @bundle = bundle
       @path = path
       @os = os_type

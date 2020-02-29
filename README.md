@@ -12,7 +12,7 @@ Actions
 *  set - adds the credentials to the cacert.pem file
 
 Properties
-*  chef_type - chef client or chefdk. Allowed values are :chef for :chefdk
+*  chef_type - chef client, chefdk or chef-workstation. Allowed values are :chef, :chefdk :chef-workstation
 *  ca_bundle - cer (X.509, base 64 encode)  format bundle to add to the cacert.pem file
 *  cacert_path - path to the cacert file to be modified
 
