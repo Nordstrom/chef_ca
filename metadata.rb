@@ -3,7 +3,7 @@ maintainer       'Nordstrom, INC.'
 maintainer_email 'itcpmall@nordstrom.com'
 license          'Apache-2.0'
 description      'Adds a certificate bundle to the chef or chefdk cacert file'
-version          '0.2.0'
+version          '0.2.1'
 chef_version     '>= 12.10'
 
 issues_url       'https://github.com/nordstrom/chef_ca/issues'
