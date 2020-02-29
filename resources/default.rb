@@ -1,7 +1,7 @@
 #
 # Cookbook: chef_ca
 # Resource: chef_ca
-# Copyright (c) 2018 Nordstrom, Inc.
+# Copyright:: (c) 2018 Nordstrom, Inc.
 #
 
 default_action :set
