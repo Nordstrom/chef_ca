@@ -80,7 +80,6 @@ describe 'cacerts class' do
       cacerts = CaCerts.new(@name, @type, initial_cacerts, @path)
       expect(cacerts.bundle_installed?).to be_truthy
     end
-
   end
 end
 

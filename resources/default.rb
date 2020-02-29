@@ -1,12 +1,12 @@
 #
 # Cookbook: chef_ca
 # Resource: chef_ca
-# Copyright (c) 2018 Nordstrom, Inc.
+# Copyright:: (c) 2018 Nordstrom, Inc.
 #
 
 default_action :set
 
-property :type, Symbol, equal_to: %i(chef chefdk), required: true
+property :type, Symbol, equal_to: %i(chef chefdk chefworkstation), required: true
 property :ca_bundle, String
 property :cacert_path, [String, NilClass]
 include ::ChefCA
