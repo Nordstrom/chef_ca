@@ -18,6 +18,6 @@
 #
 
 chef_ca node['chef_ca']['ca_bundle_name'] do
-  type :chef
+  type node['chef_ca']['ca_type']
   ca_bundle node['chef_ca']['ca_bundle']
 end
